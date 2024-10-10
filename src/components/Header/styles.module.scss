@@ -4,6 +4,10 @@
 .container {
     @include flex_box_custom(center, center, 0px);
     background: #ebe6e3;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
 }
 
 .containerHeader {
