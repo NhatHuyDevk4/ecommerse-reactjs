@@ -1,10 +1,9 @@
-import Header from '@components/Header/Header';
-import Layout from '@components/Layout/Layout';
+import HomePage from '@components/HomePage/HomePage';
 
 function App() {
     return (
         <>
-            <Header />
+            <HomePage />
         </>
     );
 }
