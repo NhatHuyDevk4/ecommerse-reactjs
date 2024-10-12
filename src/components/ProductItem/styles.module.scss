@@ -29,7 +29,7 @@
     &:hover .showFncWhenHover {
         opacity: 1;
         right: 20px;
-        transition: opacity 500ms, right 300ms;
+        transition: opacity 500ms, right 250ms;
     }
 
     .showFncWhenHover {
@@ -41,9 +41,10 @@
     }
 
     .boxIcon {
+        @include flex_box_custom(center, center, 0px);
+
         width: 40px;
         height: 40px;
-        @include flex_box_custom(center, center, 0px);
 
         img {
             width: 17px;
@@ -51,16 +52,15 @@
         }
 
         &:hover {
-            background-color: rgb(222, 222, 222);
+            background-color: #ccc;
             transition: background-color 500ms;
         }
     }
 }
-
 .title {
+    margin: 6px 0px;
     font-size: 16px;
     color: $four_color;
-    margin: 6px 0px;
 }
 
 .priceCl {
