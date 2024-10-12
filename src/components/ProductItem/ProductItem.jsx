@@ -34,7 +34,7 @@ function ProductItem({ src, prevSrc, name, price }) {
                 </div>
             </div>
             <div className={title}>{name}</div>
-            <div className={priceCl}>${price}</div>
+            <div className={priceCl}>{price}</div>
         </div>
     );
 }
