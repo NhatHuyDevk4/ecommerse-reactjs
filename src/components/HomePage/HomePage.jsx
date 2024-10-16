@@ -23,12 +23,15 @@ function HomePage() {
 
     return (
         <>
+            {/* Header  */}
             <MyHeader />
+            {/* End Header  */}
             <Banner />
             <Info />
             <AdvanceHeadling />
             <HeadingListProducts data={listProducts.slice(0, 2)} />
             <PopularProduct data={listProducts.slice(2, listProducts.length)} />
+
             <SaleHomepage />
             <MyFooter />
         </>

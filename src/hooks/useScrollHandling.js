@@ -30,7 +30,7 @@ const useScrollHandling = () => {
 
     return {
         scrollDriction,
-        scrollPosition
+        scrollPosition //bắt sự kiện người dùng khi scroll xuống số để bắt sự kiện
     };
 };
 

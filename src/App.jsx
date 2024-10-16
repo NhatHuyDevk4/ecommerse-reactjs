@@ -2,14 +2,15 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import routers from '@/routers/routers';
 import { Suspense } from 'react';
 import { SidebarProvider } from '@/contexts/SideBarProvider';
-import SideBar from '@components/Sidebar/Sidebar';
+import Sidebar from '@components/Sidebar/Sidebar';
 
 function App() {
     return (
         <SidebarProvider>
-            <SideBar />
+            <Sidebar />
 
             <BrowserRouter>
+                {/* supspense là thời gian chờ loading */}
                 <Suspense fallback={<div>Loading...</div>}>
                     <Routes>
                         {routers.map((item, index) => {

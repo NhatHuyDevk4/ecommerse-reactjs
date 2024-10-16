@@ -9,6 +9,7 @@ function Menu({ content, href }) {
     const handleClickShowLogin = () => {
         if (content === 'Sign in') {
             setIsOpen(true);
+            // bắt sự kiện nhấn sign in
             setType('login');
         }
     };

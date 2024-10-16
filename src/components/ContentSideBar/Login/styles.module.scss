@@ -1,3 +1,6 @@
+@import '@styles/mixin.module.scss';
+@import '@styles/variable.module.scss';
+
 .container {
     padding: 30px 20px 0 20px;
 
@@ -5,9 +8,11 @@
         font-size: 18px;
         text-align: center;
         margin-bottom: 30px;
+        font-weight: 600;
     }
 
     .boxRememberMe {
+        @include flex_box_custom(start, center, 0px);
         margin-bottom: 30px;
 
         input {
@@ -20,11 +25,12 @@
     }
 
     .lostPw {
-        margin-top: 20px;
         text-align: center;
+        margin-top: 20px;
         font-size: 14px;
 
         &:hover {
+            text-decoration: underline;
             cursor: pointer;
         }
     }

@@ -40,11 +40,13 @@ function SideBar() {
                 })}
                 onClick={handleToggle}
             />
+
             <div
                 className={classNames(sideBar, {
                     [slideSideBar]: isOpen
                 })}
             >
+                {/* Icon close */}
                 {isOpen && (
                     <div className={boxIcon} onClick={handleToggle}>
                         <TfiClose />
