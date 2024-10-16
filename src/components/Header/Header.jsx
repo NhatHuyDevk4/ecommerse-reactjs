@@ -37,18 +37,19 @@ function MyHeader() {
     };
 
     useEffect(() => {
-        // if (scrollPosition > 80) {
+        //C1  // if (scrollPosition > 80) {
         //     setFixedPosition(true);
         // } else {
         //     setFixedPosition(false);
         // }
 
-        // setFixedPosition(scrollPosition > 80 ? true : false);
+        //C2 setFixedPosition(scrollPosition > 80 ? true : false);
 
-        setFixedPosition(scrollPosition > 80);
+        setFixedPosition(scrollPosition > 80); //C3
     }, [scrollPosition]);
 
     return (
+        // làm scroll Header
         <div
             className={classNames(container, topHeader, {
                 [fixedHeader]: fixedPosition

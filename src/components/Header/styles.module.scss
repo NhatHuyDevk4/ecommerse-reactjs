@@ -14,13 +14,13 @@
 
 .fixedHeader {
     position: fixed;
-    top: -83px;
+    top: -83px; //che đi
     background-color: #ffffffe6;
     z-index: 999;
     box-shadow: 2px 0px 12px 0px rgba(0, 0, 0, 0.15);
     transform: translateY(83px);
-    backdrop-filter: blur(5px);
-    transition: transform 0.7s ease;
+    backdrop-filter: blur(5px); //làm background mờ đi
+    transition: transform 0.7s ease; //thời gian mong muốn thực thi
 }
 
 .containerHeader {
