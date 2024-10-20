@@ -1,15 +1,23 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import InputCommon from '@components/InputCommon/InputCommon';
 import styles from './styles.module.scss';
 import Button from '@components/Button/Button';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { ToastContext } from '@/contexts/ToastProvider';
+import { register, signIn, getInfo } from '@/apis/authService';
+import Cookies from 'js-cookie';
 
 function Login() {
     const { container, title, boxRememberMe, lostPw, errors } = styles;
 
     //Register
     const [openRegister, setOpenRegister] = useState(false);
+
+    const { toast } = useContext(ToastContext);
+
+    // chặn người dùng nhấn spam
+    const [loading, setLoading] = useState(false);
 
     const formik = useFormik({
         initialValues: {
@@ -29,15 +37,50 @@ function Login() {
                 'Password must match'
             )
         }),
-        onSubmit: (values) => {
+        onSubmit: async (values) => {
             // Handle form submission
-            console.log(values);
+            // console.log(values);
+
+            if (loading) return;
+            const { email: username, password } = values;
+            setLoading(true);
+
+            if (openRegister) {
+                await register({ username, password })
+                    .then((res) => {
+                        toast.error(res.data.message);
+                        setLoading(false);
+                    })
+                    .catch((err) => {
+                        toast.error(err.response.data.message);
+                        setLoading(false);
+                    });
+            }
+
+            if (!openRegister) {
+                await signIn({ username, password })
+                    .then((res) => {
+                        setLoading(false);
+                        const { id, refreshToken, token } = res.data;
+                        // console.log('Res', res);
+                        console.log('id', id);
+                        Cookies.set('token', token);
+                        Cookies.set('refreshToken', refreshToken);
+                    })
+                    .catch((err) => {
+                        setLoading(false);
+                    });
+            }
         }
     });
 
     const handleToggle = () => {
         setOpenRegister(!openRegister);
     };
+
+    useEffect(() => {
+        getInfo();
+    }, []);
 
     return (
         <div className={container}>
@@ -93,8 +136,15 @@ function Login() {
                 )}
 
                 <Button
-                    content={openRegister ? 'REGISTER' : 'LOGIN'}
+                    content={
+                        loading
+                            ? 'LOADING.....'
+                            : openRegister
+                            ? 'REGISTER'
+                            : 'LOGIN'
+                    }
                     type='submit'
+                    // onClick={() => toast.success('Success')}
                 />
             </form>
 

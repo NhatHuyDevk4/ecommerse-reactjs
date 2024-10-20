@@ -1,5 +1,5 @@
 {
-    "arrowParens": "always",
+    "arroParens": "always",
     "singleQuote": true,
     "jsxSingleQuote": true,
     "tabWidth": 4,
