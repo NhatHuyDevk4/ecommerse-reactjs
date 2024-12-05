@@ -24,4 +24,28 @@ axiosClient.interceptors.request.use(
     }
 );
 
+const handleRequestSuccess = (response) => {
+    return response.data;
+};
+
+const handleRequestError = (error) => {
+    return Promise.reject(error);
+};
+
+const handleresponseErr = async (error) => {
+    const originalRequest = error.config;
+    if (error.response.status === 401 && !originalRequest._retry) {
+        originalRequest._retry = true;
+        const refreshToken = Cookies.get('refreshToken');
+        const data = {
+            refreshToken
+        };
+        const res = await axiosClient.post('/auth/refresh-token', data);
+        if (res) {
+            Cookies.set('token', res.accessToken);
+            return axiosClient(originalRequest);
+        }
+    }
+};
+
 export default axiosClient;

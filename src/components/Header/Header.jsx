@@ -24,12 +24,14 @@ function MyHeader() {
         containerBox,
         container,
         fixedHeader,
-        topHeader
+        topHeader,
+        boxCart,
+        quantityCart
     } = styles;
 
     const { scrollPosition } = useScrollHandling();
     const [fixedPosition, setFixedPosition] = useState(false);
-    const { setIsOpen, setType } = useContext(SideBarContext);
+    const { setIsOpen, setType,   listProductCart } = useContext(SideBarContext);
 
     const handleOpenSideBar = (type) => {
         setIsOpen(true);
@@ -60,14 +62,22 @@ function MyHeader() {
                     <div className={containerBoxIcon}>
                         {dataBoxIcon.map((item) => {
                             return (
-                                <BoxIcon key={item.type} type={item.type} href={item.href} />
+                                <BoxIcon
+                                    key={item.type}
+                                    type={item.type}
+                                    href={item.href}
+                                />
                             );
                         })}
                     </div>
                     <div className={containerMenu}>
                         {dataMenu.slice(0, 3).map((item) => {
                             return (
-                                <Menu key={item.content} content={item.content} href={item.href} />
+                                <Menu
+                                    key={item.content}
+                                    content={item.content}
+                                    href={item.href}
+                                />
                             );
                         })}
                     </div>
@@ -86,7 +96,11 @@ function MyHeader() {
                     <div className={containerMenu}>
                         {dataMenu.slice(3, dataMenu.length).map((item) => {
                             return (
-                                <Menu key={item.content} content={item.content} href={item.href} />
+                                <Menu
+                                    key={item.content}
+                                    content={item.content}
+                                    href={item.href}
+                                />
                             );
                         })}
                     </div>
@@ -104,12 +118,17 @@ function MyHeader() {
                             }}
                             onClick={() => handleOpenSideBar('wishlist')}
                         />
-                        <PiShoppingCart
-                            style={{
-                                fontSize: '25px'
-                            }}
-                            onClick={() => handleOpenSideBar('cart')}
-                        />
+                        <div className={boxCart}>
+                            <PiShoppingCart
+                                style={{
+                                    fontSize: '25px'
+                                }}
+                                onClick={() => handleOpenSideBar('cart')}
+                            />
+                            <div className={quantityCart}>
+                               {listProductCart.length}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

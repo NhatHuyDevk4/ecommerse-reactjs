@@ -4,7 +4,8 @@ import MainLayout from '@components/Layout/Layout';
 import ProductItem from '@components/ProductItem/ProductItem';
 import styles from '../styles.module.scss';
 import Button from '@components/Button/Button';
-import { MdOutlineDownloading } from "react-icons/md";
+
+import LoadingTextCommon from '@components/LoadingTextCommon/LoadingTextCommon';
 
 const ListProducts = () => {
     const {
@@ -50,7 +51,7 @@ const ListProducts = () => {
                                 <Button
                                     content={
                                         isLoadMore ? (
-                                            <MdOutlineDownloading className={rotate} />
+                                           <LoadingTextCommon />
                                         ) : (
                                             'LOAD MORE PRODUCT'
                                         )
