@@ -1,6 +1,6 @@
 import MyHeader from '@components/Header/Header';
 import MainLayout from '@components/Layout/Layout';
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from './styles.module.scss';
 import { useNavigate } from 'react-router-dom';
 import Banner from '@pages/OurShop/Components/Banner';
@@ -8,10 +8,13 @@ import { OurShopProvider } from '@contexts/OurShopProvider';
 import Filter from '@pages/OurShop/Components/Filter';
 import ListProducts from '@pages/OurShop/Components/ListProducts';
 
+
 const OurShop = () => {
     const { container, functionBox, specialText, btnBack } = styles;
 
     const navigate = useNavigate();
+
+
 
     const handleBack = () => {
         navigate(-1);
