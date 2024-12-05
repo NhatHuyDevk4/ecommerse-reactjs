@@ -89,3 +89,7 @@
     margin-top: 10px;
     flex-wrap: wrap; //flex-wrap là để các item trong flexbox sẽ xuống dòng khi không đủ chỗ
 }
+
+.containerItem{
+    @include flex_box_custom(flex-start, center, 10px);
+}
