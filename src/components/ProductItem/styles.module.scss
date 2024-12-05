@@ -88,6 +88,19 @@
     }
 }
 
+
+.isActiveSize{
+    border: 1px solid $primary_color !important; //ghi đè lên css trước để hiển thị ô đã chọn
+}
+
+.btnClear{
+    font-size: 12px;
+    color: $four_color;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
 .textCenter {
     text-align: center;
 }

@@ -5,7 +5,7 @@ import cartIcon from '@icons/svgs/cartIcon.svg';
 import cls from 'classnames'; // này là thư viện giúp mình thêm class vào 1 element và thêm điều kiện vào class
 import Button from '@components/Button/Button';
 import { OurShopContext } from '@/contexts/OurShopProvider';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 function ProductItem({
     src,
@@ -29,14 +29,37 @@ function ProductItem({
         content,
         containerItem,
         leftBtn,
-        largeImg
+        largeImg,
+        isActiveSize,
+        btnClear
     } = styles;
 
-    const { isShowGrid } = useContext(OurShopContext);
+    // const { isShowGrid } = useContext(OurShopContext);
 
-    console.log('isShowGrid', isShowGrid);
+    // console.log('isShowGrid', isShowGrid);
 
-    // console.log('details', details);
+    const [sizeChoose, setSizeChoose] = useState('');
+
+    const ourShopStore = useContext(OurShopContext);
+    const [isShowGrid, setIsShowGrid] = useState(ourShopStore?.isShowGrid);
+
+    const handleChooseSize = (size) => {
+        console.log('size', size);
+        setSizeChoose(size);
+    };
+
+    const handleClearSize = () => {
+        setSizeChoose('');
+    };
+
+    useEffect(() => {
+        if(isHomepage){
+            setIsShowGrid(true);
+        } else {
+            setIsShowGrid(ourShopStore?.isShowGrid);
+        }
+    }, [isHomepage, ourShopStore?.isShowGrid]);
+
     return (
         <div className={isShowGrid ? '' : containerItem}>
             <div className={cls(boxImg, { [largeImg]: !isShowGrid })}>
@@ -63,10 +86,22 @@ function ProductItem({
                 {!isHomepage && (
                     <div className={boxSize}>
                         {details.size.map((item, index) => (
-                            <div className={size} key={index}>
+                            <div
+                                className={cls(size, {
+                                    [isActiveSize]: item.name === sizeChoose // nếu item.name === sizeChoose thì thêm class isActiveSize vào
+                                })}
+                                key={index}
+                                onClick={() => handleChooseSize(item.name)}
+                            >
                                 {item.name}
                             </div>
                         ))}
+                    </div>
+                )}
+
+                {sizeChoose && (
+                    <div className={btnClear} onClick={() => handleClearSize()}>
+                        clear
                     </div>
                 )}
 
