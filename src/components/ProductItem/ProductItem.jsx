@@ -53,7 +53,7 @@ function ProductItem({
     };
 
     useEffect(() => {
-        if(isHomepage){
+        if (isHomepage) {
             setIsShowGrid(true);
         } else {
             setIsShowGrid(ourShopStore?.isShowGrid);

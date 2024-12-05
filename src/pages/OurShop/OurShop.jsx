@@ -7,6 +7,7 @@ import Banner from '@pages/OurShop/Components/Banner';
 import { OurShopProvider } from '@contexts/OurShopProvider';
 import Filter from '@pages/OurShop/Components/Filter';
 import ListProducts from '@pages/OurShop/Components/ListProducts';
+import MyFooter from '@components/Footer/Footer';
 
 
 const OurShop = () => {
@@ -42,6 +43,7 @@ const OurShop = () => {
                     <ListProducts />
                 </div>
             </MainLayout>
+            <MyFooter />
         </OurShopProvider>
     );
 };
