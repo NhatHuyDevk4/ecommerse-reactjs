@@ -11,9 +11,6 @@ const Filter = () => {
     const { sortOptions, showOptions, setSortId, setShowId, setIsShowGrid } =
         useContext(OurShopContext);
 
-    console.log('sortOptions', sortOptions);
-    console.log('showOptions', showOptions);
-
     const getValueSelect = (value, type) => {
         if (type === 'sort') {
             setSortId(value);

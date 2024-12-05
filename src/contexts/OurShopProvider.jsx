@@ -25,6 +25,32 @@ export const OurShopProvider = ({ children }) => {
     const [isShowGrid, setIsShowGrid] = useState(true);
     const [products, setProducts] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isLoadMore, setIsLoadMore] = useState(false);
+    const [page, setPage] = useState(1);
+    const [total, setTotal] = useState(0);
+
+    const handleLoadMore = () => {
+        const query = {
+            sortType: sortId,
+            page: +page,
+            limit: showId
+        };
+        setIsLoadMore(true);
+        getProducts(query) //do getProducts là async function nên phải dùng then catch mới tránh bị promise pending
+            .then((res) => {
+                setProducts((prev) => {
+                   return [...prev, ...res.contents];
+                }); // tạo một state đưa vào value để truyền xuống các component khác
+                setPage(+res.page);
+                setTotal(res.total);
+                setIsLoadMore(false);
+
+            })
+            .catch((err) => {
+                console.log('err', err);
+                setIsLoadMore(false);
+            });
+    };
 
     const values = {
         sortOptions,
@@ -34,7 +60,10 @@ export const OurShopProvider = ({ children }) => {
         setIsShowGrid,
         products,
         isShowGrid,
-        isLoading
+        isLoading,
+        handleLoadMore,
+        total,
+        isLoadMore
     };
 
     useEffect(() => {
@@ -49,6 +78,7 @@ export const OurShopProvider = ({ children }) => {
             .then((res) => {
                 setProducts(res.contents); // tạo một state đưa vào value để truyền xuống các component khác
                 setIsLoading(false);
+                setTotal(res.total);
             })
             .catch((err) => {
                 console.log('err', err);
