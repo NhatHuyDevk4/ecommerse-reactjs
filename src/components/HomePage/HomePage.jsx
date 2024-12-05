@@ -13,8 +13,17 @@ import MyFooter from '@components/Footer/Footer';
 function HomePage() {
     const [listProducts, setListProducts] = useState([]);
 
+   
+
     useEffect(() => {
-        getProducts().then((res) => {
+
+        const query = {
+            sortType: 0,
+            page: 1,
+            limit: 10
+        }
+
+        getProducts(query).then((res) => {
             setListProducts(res.contents);
         });
     }, []);

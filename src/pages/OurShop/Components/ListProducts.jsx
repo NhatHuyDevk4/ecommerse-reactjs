@@ -6,7 +6,7 @@ import styles from '../styles.module.scss';
 
 const ListProducts = () => {
 
-    const { products } = useContext(OurShopContext);
+    const { products, isShowGrid } = useContext(OurShopContext);
 
     const {containerProduct} = styles;
     // console.log('products', products);
@@ -14,7 +14,7 @@ const ListProducts = () => {
     return (
         <>
             <MainLayout>
-                <div className={containerProduct}>
+                <div className={isShowGrid ? containerProduct : ''}>
                     {products.map((item) => (
                         <ProductItem
                             key={item.id}
@@ -22,6 +22,8 @@ const ListProducts = () => {
                             prevSrc={item.images[1]}
                             name={item.name}
                             price={item.price}
+                            details={item}
+                            isHomepage={false}
                         />
                     ))}
                 </div>
