@@ -23,7 +23,7 @@ function Login() {
     // chặn người dùng nhấn spam
     const [loading, setLoading] = useState(false);
 
-    const {setIsOpen} = useContext(SideBarContext);
+    const {setIsOpen,   handleGetListProductCart} = useContext(SideBarContext);
 
     const {setUserId} = useContext(StoreContext);
 
@@ -77,6 +77,7 @@ function Login() {
                         Cookies.set('refreshToken', refreshToken);
                         toast.success('Sign in successfully!');
                         setIsOpen(false);
+                        handleGetListProductCart(id, 'cart');
                     })
                     .catch((err) => {
                         setLoading(false);

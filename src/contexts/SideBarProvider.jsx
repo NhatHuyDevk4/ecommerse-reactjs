@@ -1,7 +1,8 @@
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { createContext } from 'react';
 import { getCard } from '@/apis/cartService';
+import Cookies from 'js-cookie';
 
 export const SideBarContext = createContext();
 
@@ -14,16 +15,21 @@ export const SidebarProvider = ({ children }) => {
 
     const [listProductCart, setListProductCart] = useState([]);
 
+    const [isLoading, setIsLoading] = useState(false);
+    const userId = Cookies.get('userId');
   
 
     const handleGetListProductCart = (userId, type) => {
+        setIsLoading(true);
         if (userId && type === 'cart') { // nếu type là cart thì mới gọi api 
             getCard(userId)
                 .then((res) => {
                     setListProductCart(res.data.data);
+                    setIsLoading(false);
                 })
                 .catch((err) => {
                     setListProductCart([]); // nếu lỗi thì set list rỗng
+                    setIsLoading(false);
                 });
         }
     };
@@ -34,8 +40,13 @@ export const SidebarProvider = ({ children }) => {
         type,
         setType,
         handleGetListProductCart,
-        listProductCart
+        listProductCart,
+        isLoading
     };
+
+    useEffect(() => {
+        handleGetListProductCart(userId, 'cart'); // gọi api khi component render 
+    },[])
 
     return (
         <SideBarContext.Provider value={value}>
