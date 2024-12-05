@@ -95,15 +95,3 @@
     min-height: 800px; //để khi không có sản phẩm thì vẫn giữ nguyên chiều cao không bị nhảy
 }
 
-
-.rotate{
-    animation: loading 4s linear infinite;
-    @keyframes loading {
-        0% {
-            transform: rotate(0deg);
-        }
-        100% {
-            transform: rotate(360deg);
-        }
-    }
-}

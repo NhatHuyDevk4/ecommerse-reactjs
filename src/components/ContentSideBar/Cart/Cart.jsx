@@ -3,9 +3,16 @@ import ItemProduct from '@components/ContentSideBar/components/ItemProduct/ItemP
 import { PiShoppingCartLight } from 'react-icons/pi';
 import styles from './styles.module.scss';
 import Button from '@components/Button/Button';
+import { useContext } from 'react';
+import { SideBarContext } from '@/contexts/SideBarProvider';
 
 function Cart() {
     const { container, total, boxBtn, price } = styles;
+
+    const {listProductCart} = useContext(SideBarContext);
+
+    console.log("ListProductCart", listProductCart);
+
     return (
         <div className={container}>
             <div>
@@ -14,7 +21,16 @@ function Cart() {
                     title='CART'
                 />
 
-                <ItemProduct />
+                {listProductCart.map((item,index) => {
+                    return <ItemProduct key={index} item={item}
+                    src={item.images[0]}
+                    nameProduct={item.name}
+                    priceProduct={item.price}
+                    skuProduct={item.sku}
+                    sizeProduct={item.size}
+                    quantity={item.quantity}
+                    />
+                })}
             </div>
 
             <div>
