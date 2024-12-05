@@ -3,7 +3,7 @@ import Menu from './Menu/Menu';
 import { dataBoxIcon, dataMenu } from './constants';
 import styles from './styles.module.scss';
 import Logo from '@icons/images/Logo-retina.png';
-import reLoadIcon from '@icons/svgs/reloadIcon.svg';
+// Removed unused import
 import { TfiReload } from 'react-icons/tfi';
 import { BsHeart } from 'react-icons/bs';
 import { PiShoppingCart } from 'react-icons/pi';
@@ -60,14 +60,14 @@ function MyHeader() {
                     <div className={containerBoxIcon}>
                         {dataBoxIcon.map((item) => {
                             return (
-                                <BoxIcon type={item.type} href={item.href} />
+                                <BoxIcon key={item.type} type={item.type} href={item.href} />
                             );
                         })}
                     </div>
                     <div className={containerMenu}>
                         {dataMenu.slice(0, 3).map((item) => {
                             return (
-                                <Menu content={item.content} href={item.href} />
+                                <Menu key={item.content} content={item.content} href={item.href} />
                             );
                         })}
                     </div>
@@ -86,7 +86,7 @@ function MyHeader() {
                     <div className={containerMenu}>
                         {dataMenu.slice(3, dataMenu.length).map((item) => {
                             return (
-                                <Menu content={item.content} href={item.href} />
+                                <Menu key={item.content} content={item.content} href={item.href} />
                             );
                         })}
                     </div>

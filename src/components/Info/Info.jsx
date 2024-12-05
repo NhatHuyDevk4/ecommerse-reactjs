@@ -11,6 +11,7 @@ function Info() {
                 {dataInfo.map((item) => {
                     return (
                         <InfoCard
+                            key={item.title}
                             content={item.title}
                             description={item.description}
                             src={item.src}

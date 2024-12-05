@@ -16,7 +16,7 @@ function MyFooter() {
 
             <div className={boxNav}>
                 {dataMenu.map((item) => (
-                    <div>{item.content}</div>
+                    <div key={item.content}>{item.content}</div>
                 ))}
             </div>
 

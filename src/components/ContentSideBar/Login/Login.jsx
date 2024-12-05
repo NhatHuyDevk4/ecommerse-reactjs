@@ -7,6 +7,10 @@ import * as Yup from 'yup';
 import { ToastContext } from '@/contexts/ToastProvider';
 import { register, signIn, getInfo } from '@/apis/authService';
 import Cookies from 'js-cookie';
+import { SideBarContext } from '@/contexts/SideBarProvider';
+import { StoreContext } from '@/contexts/StoreProvider';
+
+
 
 function Login() {
     const { container, title, boxRememberMe, lostPw, errors } = styles;
@@ -18,6 +22,10 @@ function Login() {
 
     // chặn người dùng nhấn spam
     const [loading, setLoading] = useState(false);
+
+    const {setIsOpen} = useContext(SideBarContext);
+
+    const {setUserId} = useContext(StoreContext);
 
     const formik = useFormik({
         initialValues: {
@@ -62,13 +70,17 @@ function Login() {
                     .then((res) => {
                         setLoading(false);
                         const { id, refreshToken, token } = res.data;
+                        setUserId(id);
                         // console.log('Res', res);
-                        console.log('id', id);
+                        Cookies.set('userId', id);
                         Cookies.set('token', token);
                         Cookies.set('refreshToken', refreshToken);
+                        toast.success('Sign in successfully!');
+                        setIsOpen(false);
                     })
                     .catch((err) => {
                         setLoading(false);
+                        toast.error("Sign in failed! Please check your account's information");
                     });
             }
         }
@@ -78,9 +90,7 @@ function Login() {
         setOpenRegister(!openRegister);
     };
 
-    useEffect(() => {
-        getInfo();
-    }, []);
+
 
     return (
         <div className={container}>
@@ -144,7 +154,7 @@ function Login() {
                             : 'LOGIN'
                     }
                     type='submit'
-                    // onClick={() => toast.success('Success')}
+                    // onClick={() => toast.success('Sign in successfully!')}
                 />
             </form>
 
