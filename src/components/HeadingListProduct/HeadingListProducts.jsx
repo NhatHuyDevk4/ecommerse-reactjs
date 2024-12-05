@@ -3,15 +3,19 @@ import CountdownBanner from '@components/CountdownBanner/CountdownBanner';
 import styles from './styles.module.scss';
 import ProductItem from '@components/ProductItem/ProductItem';
 
-function HeadingListProducts({ data }) {
-    const { container, containerItem } = styles;
+function ProductListWithHeading({ data }) {
+    // Using the full styles object directly in the JSX for clarity
 
     return (
         <MainLayout>
-            <div className={container}>
+            <div className={styles.container}>
                 <CountdownBanner />
-                <div className={containerItem}>
-                    {data.map((item) => {
+                <div className={styles.containerItem}>
+                    {data.map((item, index) => {
+                        if (!item.id) {
+                            // console.error(`Item at index ${index} is missing an id.`);
+                            return null;
+                        }
                         return (
                             <ProductItem
                                 key={item.id}
@@ -28,4 +32,4 @@ function HeadingListProducts({ data }) {
     );
 }
 
-export default HeadingListProducts;
+export default ProductListWithHeading;
