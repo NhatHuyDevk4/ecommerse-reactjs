@@ -11,9 +11,9 @@ function App() {
         <StoreProvider>
             <ToastProvider>
                 <SidebarProvider>
-                    <Sidebar />
-
                     <BrowserRouter>
+                        <Sidebar />
+                        {/* Nếu hiện lỗi useNavigate() may be only use in the context of a router component thì tức là nó nằm ngoài router ko thể chuyển trang cần đưa vào trong router */}
                         {/* supspense là thời gian chờ loading */}
                         <Suspense fallback={<div>Loading...</div>}>
                             <Routes>

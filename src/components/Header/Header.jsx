@@ -31,7 +31,7 @@ function MyHeader() {
 
     const { scrollPosition } = useScrollHandling();
     const [fixedPosition, setFixedPosition] = useState(false);
-    const { setIsOpen, setType,   listProductCart } = useContext(SideBarContext);
+    const { setIsOpen, setType, listProductCart } = useContext(SideBarContext);
 
     const handleOpenSideBar = (type) => {
         setIsOpen(true);
@@ -126,7 +126,7 @@ function MyHeader() {
                                 onClick={() => handleOpenSideBar('cart')}
                             />
                             <div className={quantityCart}>
-                               {listProductCart.length}
+                                {listProductCart.length}
                             </div>
                         </div>
                     </div>

@@ -15,8 +15,6 @@ const OurShop = () => {
 
     const navigate = useNavigate();
 
-
-
     const handleBack = () => {
         navigate(-1);
     };
