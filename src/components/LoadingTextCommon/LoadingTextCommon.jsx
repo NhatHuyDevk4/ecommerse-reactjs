@@ -1,14 +1,14 @@
-
-import { MdOutlineDownloading } from "react-icons/md";
-import React from 'react'
-import style from './style.module.scss'
+import { AiOutlineLoading3Quarters } from 'react-icons/ai';
+import React from 'react';
+import style from './style.module.scss';
 const LoadingTextCommon = () => {
+    const { rotate } = style;
 
-    const {rotate} = style
+    return (
+        <div>
+            <AiOutlineLoading3Quarters className={rotate} />
+        </div>
+    );
+};
 
-  return (
-    <div> <MdOutlineDownloading className={rotate} /></div>
-  )
-}
-
-export default LoadingTextCommon
+export default LoadingTextCommon;
