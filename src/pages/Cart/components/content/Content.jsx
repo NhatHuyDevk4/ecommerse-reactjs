@@ -6,10 +6,20 @@ import Button from '@components/Button/Button';
 import { FaRegTrashCan } from 'react-icons/fa6';
 import { SideBarContext } from '@/contexts/SideBarProvider';
 import { addProductToCart, deleteItem, deleteCart } from '@/apis/cartService';
-
+import { AiOutlineShoppingCart } from 'react-icons/ai';
+import { useNavigate } from 'react-router-dom';
 const Content = () => {
-    const { containerContents, fotterContent, couponCode, btnFotterContent } =
-        style;
+    const {
+        containerContents,
+        fotterContent,
+        couponCode,
+        btnFotterContent,
+        boxEmptyCart,
+        titleEmpty,
+        desEmpty
+    } = style;
+
+    const navigate = useNavigate();
 
     const {
         listProductCart,
@@ -44,8 +54,6 @@ const Content = () => {
     };
 
     const handleDeleteCart = () => {
-
-
         console.log('userId', userId);
         setIsLoading(true);
         deleteCart({ userId })
@@ -58,50 +66,83 @@ const Content = () => {
             });
     };
 
+    const handleNavigateToShop = () => {
+        navigate('/shop');
+    };
+
     return (
-        <div className={containerContents}>
-            <div>
-                <CartTable
-                    listProductCart={listProductCart}
-                    getData={handleReplaceQuantity}
-                    isLoading={isLoading}
-                    getDataDelete={handleDeleteItemCart}
-                />
-                <div className={fotterContent}>
-                    <div className={couponCode}>
-                        <input type='text' placeholder='Coupon Code' />
-                        <Button
-                            content={'OK'}
-                            isPriamry={false}
-                            style={{
-                                width: '36px',
-                                height: '36.99px',
-                                borderRadius: '0'
-                            }}
+        <>
+            {listProductCart.length > 0 && userId ? (
+                <div className={containerContents}>
+                    <div>
+                        <CartTable
+                            listProductCart={listProductCart}
+                            getData={handleReplaceQuantity}
+                            isLoading={isLoading}
+                            getDataDelete={handleDeleteItemCart}
                         />
+                        <div className={fotterContent}>
+                            <div className={couponCode}>
+                                <input type='text' placeholder='Coupon Code' />
+                                <Button
+                                    content={'OK'}
+                                    isPriamry={false}
+                                    style={{
+                                        width: '36px',
+                                        height: '36.99px',
+                                        borderRadius: '0'
+                                    }}
+                                />
+                            </div>
+
+                            <div className={btnFotterContent}>
+                                <Button
+                                    content={
+                                        <>
+                                            <FaRegTrashCan /> Clear Shopping
+                                            Cart
+                                        </>
+                                    }
+                                    isPriamry={false}
+                                    style={{
+                                        width: '100%',
+                                        height: '34px',
+                                        padding: '10.5px 34.5px'
+                                    }}
+                                    onClick={handleDeleteCart}
+                                />
+                            </div>
+                        </div>
                     </div>
 
-                    <div className={btnFotterContent}>
+                    <CartSummary />
+                </div>
+            ) : (
+                <div className={boxEmptyCart}>
+                    <AiOutlineShoppingCart style={{ fontSize: '50px' }} />
+                    <div className={titleEmpty}>
+                        YOUR SHOPPING CART IS EMPTY
+                    </div>
+                    <div className={desEmpty}>
+                        We invite you to get acquainted with an assortment of
+                        our shop. Surely you can find something for yourself!
+                    </div>
+                    <div>
                         <Button
-                            content={
-                                <>
-                                    <FaRegTrashCan /> Clear Shopping Cart
-                                </>
-                            }
-                            isPriamry={false}
+                            content={'RETURN TO SHOP'}
                             style={{
-                                width: '100%',
-                                height: '34px',
-                                padding: '10.5px 34.5px',
+                                width: '164px',
+                                height: '35px',
+                                padding: '6px',
+                                fontSize: '12px'
                             }}
-                            onClick={handleDeleteCart}
+
+                            onClick={handleNavigateToShop}
                         />
                     </div>
                 </div>
-            </div>
-
-            <CartSummary />
-        </div>
+            )}
+        </>
     );
 };
 
