@@ -1,7 +1,9 @@
 import Button from '@components/Button/Button';
 import style from '../../styles.module.scss';
 import cls from 'classnames';
-import React from 'react';
+import React, { useContext } from 'react';
+import { SideBarContext } from '@/contexts/SideBarProvider';
+import LoadingCart from '../LoadingCart';
 
 const CartSummary = () => {
     const {
@@ -17,9 +19,10 @@ const CartSummary = () => {
         titleMethods,
         boxImgMethods,
         imgMethods,
-        textSecure,
+        textSecure
     } = style;
 
+    const { listProductCart, isLoading } = useContext(SideBarContext);
 
     const srcMethods = [
         'https://xstore.8theme.com/elementor2/marseille04/wp-content/themes/xstore/images/woocommerce/payment-icons/visa.jpeg',
@@ -27,8 +30,12 @@ const CartSummary = () => {
         'https://xstore.8theme.com/elementor2/marseille04/wp-content/themes/xstore/images/woocommerce/payment-icons/paypal.jpeg',
         'https://xstore.8theme.com/elementor2/marseille04/wp-content/themes/xstore/images/woocommerce/payment-icons/american-express.jpeg',
         'https://xstore.8theme.com/elementor2/marseille04/wp-content/themes/xstore/images/woocommerce/payment-icons/maestro.jpeg',
-        'https://xstore.8theme.com/elementor2/marseille04/wp-content/themes/xstore/images/woocommerce/payment-icons/bitcoin.jpeg',
-    ]
+        'https://xstore.8theme.com/elementor2/marseille04/wp-content/themes/xstore/images/woocommerce/payment-icons/bitcoin.jpeg'
+    ];
+
+    const totalCart = listProductCart.reduce((acc, item) => {
+        return acc + item.total;
+    }, 0);
 
     return (
         <div className={containerRight}>
@@ -37,17 +44,23 @@ const CartSummary = () => {
 
                 <div className={cls(boxTotal, subTotal)}>
                     <div>Subtotal</div>
-                    <div className={price}>$2,099,97</div>
+                    <div className={price}>{totalCart}$</div>
                 </div>
 
                 <div className={cls(boxTotal, total)}>
                     <div>TOTAL</div>
-                    <div>$2,099,97</div>
+                    <div>{totalCart}$</div>
                 </div>
 
                 <Button content={'PROCEED TO CHECKOUT'} />
                 <div className={empty}></div>
                 <Button content={'CONTINUE SHOPPING'} isPriamry={false} />
+
+                {isLoading && (
+                    <div>
+                        <LoadingCart />
+                    </div>
+                )}
             </div>
 
             <div className={containerMethods}>
@@ -56,16 +69,14 @@ const CartSummary = () => {
                 </div>
 
                 <div className={boxImgMethods}>
-                   {
-                    srcMethods.map((item, index) => (
+                    {srcMethods.map((item, index) => (
                         <img
-                        src={item}
-                        alt='ảnh src'
-                        className={imgMethods}
-                        key={index}
-                    />
-                    ))
-                   }
+                            src={item}
+                            alt='ảnh src'
+                            className={imgMethods}
+                            key={index}
+                        />
+                    ))}
                 </div>
             </div>
 
