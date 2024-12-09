@@ -2,9 +2,9 @@ import React from 'react';
 import style from '../../styles.module.scss';
 import { FaRegTrashCan } from 'react-icons/fa6';
 import SelectBox from '@/pages/OurShop/Components/SelectBox';
-import Button from '@components/Button/Button';
+import LoadingCart from '../LoadingCart';
 
-const CartTable = () => {
+const CartTable = ({ listProductCart, getData, isLoading, getDataDelete }) => {
     const {
         cartTable,
         sizeProduct,
@@ -13,37 +13,17 @@ const CartTable = () => {
         nameProduct,
         productInfo,
         productSku,
-        productPrice,
-        fotterContent,
-        couponCode,
-        btnFotterContent
+        productPrice
     } = style;
 
-    const CartItem = [
-        {
-            id: 1,
-            name: 'Product 1Consectetur nibh at',
-            price: 100,
-            sku: 543534,
-            size: 'M',
-            quantity: 1,
-            image: 'https://via.placeholder.com/150'
-        }
-    ];
-
-    const optionSelect = [
-        {
-            label: 1,
-            value: 1
-        },
-        {
-            label: 2,
-            value: 2
-        },
-        {
-            label: 3,
-            value: 3
-        }
+    const showOptions = [
+        { label: '1', value: '1' },
+        { label: '2', value: '2' },
+        { label: '3', value: '3' },
+        { label: '4', value: '4' },
+        { label: '5', value: '5' },
+        { label: '6', value: '6' },
+        { label: '7', value: '7' }
     ];
 
     const handleDelete = (id) => {
@@ -52,6 +32,18 @@ const CartTable = () => {
 
     const handleQuantityChange = (id, quantity) => {
         console.log(id, quantity);
+    };
+
+    const getValueSelect = (userId, productId, quantity, size) => {
+        const data = {
+            userId,
+            productId,
+            quantity,
+            size,
+            isMultiple: true
+        };
+
+        getData(data);
     };
 
     return (
@@ -69,13 +61,10 @@ const CartTable = () => {
                     </thead>
 
                     <tbody>
-                        {CartItem.map((item) => (
-                            <tr key={item.id}>
+                        {listProductCart.map((item, index) => (
+                            <tr key={index}>
                                 <td>
-                                    <img
-                                        src='https://xstore.8theme.com/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Image-2.1-min-285x340.jpg'
-                                        alt={item.name}
-                                    />
+                                    <img src={item.images[0]} alt={item.name} />
                                     <div className={productInfo}>
                                         <div className={nameProduct}>
                                             {item.name}
@@ -94,7 +83,18 @@ const CartTable = () => {
                                         </div>
                                     </div>
                                     <td>
-                                        <FaRegTrashCan onClick={handleDelete} />
+                                        <FaRegTrashCan
+                                            onClick={() =>
+                                                getDataDelete({
+                                                    userId: item.userId,
+                                                    productId: item.productId
+                                                })
+                                            }
+
+                                            style={{
+                                                cursor: 'pointer',
+                                            }}
+                                        />
                                     </td>
                                 </td>
                                 <td>
@@ -105,45 +105,30 @@ const CartTable = () => {
                                 </td>
                                 <td>
                                     <SelectBox
-                                        options={optionSelect}
-                                        getValue={handleDelete}
+                                        options={showOptions}
+                                        getValue={(e) =>
+                                            getValueSelect(
+                                                item.userId,
+                                                item.productId,
+                                                e,
+                                                item.size,
+                                                item.quantity
+                                            )
+                                        }
+                                        defaultValue={item.quantity}
                                     />
                                 </td>
                                 <td>
                                     <p className={productPrice}>
-                                        ${item.price}
+                                        ${item.total}
                                     </p>
                                 </td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
-            </div>
-            <div className={fotterContent}>
-                <div className={couponCode}>
-                    <input type='text' placeholder='Coupon Code' />
-                    <Button
-                        content={'OK'}
-                        isPriamry={false}
-                        style={{ width: '36px', height: '36.99px', borderRadius: '0' }}
-                    />
-                </div>
 
-                <div className={btnFotterContent}>
-                    <Button
-                        content={
-                            <>
-                                <FaRegTrashCan /> Clear Shopping Cart
-                            </>
-                        }
-                        isPriamry={false}
-                        style={{
-                            width: '100%',
-                            height: '34px',
-                            padding: '10.5px 34.5px'
-                        }}
-                    />
-                </div>
+                {isLoading && <LoadingCart />}
             </div>
         </>
     );
