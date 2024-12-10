@@ -136,7 +136,6 @@ const Content = () => {
                                 padding: '6px',
                                 fontSize: '12px'
                             }}
-
                             onClick={handleNavigateToShop}
                         />
                     </div>

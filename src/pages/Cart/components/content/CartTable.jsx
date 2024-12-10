@@ -90,9 +90,8 @@ const CartTable = ({ listProductCart, getData, isLoading, getDataDelete }) => {
                                                     productId: item.productId
                                                 })
                                             }
-
                                             style={{
-                                                cursor: 'pointer',
+                                                cursor: 'pointer'
                                             }}
                                         />
                                     </td>
