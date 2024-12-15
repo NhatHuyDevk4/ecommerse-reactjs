@@ -13,7 +13,8 @@ const CartTable = ({ listProductCart, getData, isLoading, getDataDelete }) => {
         nameProduct,
         productInfo,
         productSku,
-        productPrice
+        productPrice,
+        prodcutContent,
     } = style;
 
     const showOptions = [
@@ -64,24 +65,38 @@ const CartTable = ({ listProductCart, getData, isLoading, getDataDelete }) => {
                         {listProductCart.map((item, index) => (
                             <tr key={index}>
                                 <td>
-                                    <img src={item.images[0]} alt={item.name} />
+                                    {/* information name and price  */}
+
                                     <div className={productInfo}>
-                                        <div className={nameProduct}>
-                                            {item.name}
-                                        </div>
-                                        <div className={sizeProduct}>
-                                            <div className={sizeProduct__name}>
-                                                Size:{' '}
-                                                <span
+                                        <img
+                                            src={item.images[0]}
+                                            alt={item.name}
+                                        />
+                                        <div className={prodcutContent}>
+                                            <div className={nameProduct}>
+                                                {item.name}
+                                            </div>
+                                            <div className={sizeProduct}>
+                                                <div
                                                     className={
-                                                        sizeProduct__value
+                                                        sizeProduct__name
                                                     }
                                                 >
-                                                    {item.size}
-                                                </span>
+                                                    Size:{' '}
+                                                    <span
+                                                        className={
+                                                            sizeProduct__value
+                                                        }
+                                                    >
+                                                        {item.size}
+                                                    </span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                    {/* END information name and price  */}
+
+                                    {/* Remove icone  */}
                                     <td>
                                         <FaRegTrashCan
                                             onClick={() =>
@@ -91,13 +106,16 @@ const CartTable = ({ listProductCart, getData, isLoading, getDataDelete }) => {
                                                 })
                                             }
                                             style={{
-                                                cursor: 'pointer'
+                                                cursor: 'pointer',
+                                                padding: '0px',
+                                                textAlign: 'center'
                                             }}
                                         />
                                     </td>
+                                    {/* END Remove Icone */}
                                 </td>
                                 <td>
-                                    <p>${item.price}</p>
+                                    <p className={productPrice}>${item.price}</p>
                                 </td>
                                 <td>
                                     <p className={productSku}>${item.sku}</p>

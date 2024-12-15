@@ -109,7 +109,12 @@
                         vertical-align: top;
 
                         .productInfo {
+                            @include flex_box_custom(center, flex-start, 0px);
                             width: 200px;
+
+                            .productContent{
+                                flex-wrap: wrap;
+                            }
                         }
 
                         &:nth-child(1) {
@@ -159,18 +164,19 @@
                             }
                         }
 
-                        &:last-child {
-                            text-align: start;
-                            padding: 0;
-                        }
+                    
 
                         .productSku {
                             color: $primary_color;
                             font-weight: 400;
+                            margin: 0;
+                            text-align: center;
                         }
 
                         .productPrice {
                             color: $seconddary_color;
+                            margin: 0;
+                            text-align: end;
                         }
                     }
                 }
@@ -285,7 +291,7 @@
     }
 
     .fotterContent {
-        @include flex_box_custom(space-between, center, 0px);
+        @include flex_box_custom(space-between, center, 10px);
         margin-top: 10px;
 
         .couponCode {

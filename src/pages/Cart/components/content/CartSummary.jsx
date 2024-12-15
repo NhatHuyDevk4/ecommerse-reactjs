@@ -37,6 +37,8 @@ const CartSummary = () => {
         return acc + item.total;
     }, 0);
 
+    const  formatTotalCart = totalCart.toFixed(2);
+
     return (
         <div className={containerRight}>
             <div className={containerSummary}>
@@ -44,12 +46,12 @@ const CartSummary = () => {
 
                 <div className={cls(boxTotal, subTotal)}>
                     <div>Subtotal</div>
-                    <div className={price}>{totalCart}$</div>
+                    <div className={price}>{formatTotalCart}$</div>
                 </div>
 
                 <div className={cls(boxTotal, total)}>
                     <div>TOTAL</div>
-                    <div>{totalCart}$</div>
+                    <div>{formatTotalCart}$</div>
                 </div>
 
                 <Button content={'PROCEED TO CHECKOUT'} />
