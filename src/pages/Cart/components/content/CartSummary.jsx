@@ -40,11 +40,11 @@ const CartSummary = () => {
         return acc + item.total;
     }, 0);
 
-    const  formatTotalCart = totalCart.toFixed(2);
+    const formatTotalCart = totalCart.toFixed(2);
 
     const handleNavigateToShopping = () => {
         nagivate('/shop');
-    }
+    };
 
     return (
         <div className={containerRight}>
@@ -63,7 +63,11 @@ const CartSummary = () => {
 
                 <Button content={'PROCEED TO CHECKOUT'} />
                 <div className={empty}></div>
-                <Button content={'CONTINUE SHOPPING'} isPriamry={false} onClick={handleNavigateToShopping}/>
+                <Button
+                    content={'CONTINUE SHOPPING'}
+                    isPriamry={false}
+                    onClick={handleNavigateToShopping}
+                />
 
                 {isLoading && (
                     <div>

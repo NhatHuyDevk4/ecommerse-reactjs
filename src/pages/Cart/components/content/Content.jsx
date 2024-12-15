@@ -8,6 +8,7 @@ import { SideBarContext } from '@/contexts/SideBarProvider';
 import { addProductToCart, deleteItem, deleteCart } from '@/apis/cartService';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
+import { ToastContext } from '@/contexts/ToastProvider';
 const Content = () => {
     const {
         containerContents,
@@ -21,6 +22,8 @@ const Content = () => {
 
     const navigate = useNavigate();
 
+    const {toast} = useContext(ToastContext);
+
     const {
         listProductCart,
         handleGetListProductCart,
@@ -33,9 +36,11 @@ const Content = () => {
         setIsLoading(true); // thay vì nhấn rồi chờ thì set loading cho load lại khi set quantity
         addProductToCart(data)
             .then((res) => {
+                toast.success('Update quantity success');
                 handleGetListProductCart(data.userId, 'cart');
             })
             .catch((err) => {
+                toast.error('Update quantity fail!');
                 setIsLoading(false);
                 console.log(err);
             });
@@ -45,9 +50,11 @@ const Content = () => {
         setIsLoading(true);
         deleteItem(data)
             .then((res) => {
+                toast.success('Delete item success');
                 handleGetListProductCart(data.userId, 'cart');
             })
             .catch((err) => {
+                toast.error('Delete item fail');
                 setIsLoading(false);
                 console.log(err);
             });
@@ -58,9 +65,11 @@ const Content = () => {
         setIsLoading(true);
         deleteCart({ userId })
             .then((res) => {
+                toast.success('Delete all item in cart success!');
                 handleGetListProductCart(userId, 'cart');
             })
             .catch((err) => {
+                toast.error('Delete all item in cart fail!');
                 setIsLoading(false);
                 console.log(err);
             });

@@ -27,14 +27,6 @@ const CartTable = ({ listProductCart, getData, isLoading, getDataDelete }) => {
         { label: '7', value: '7' }
     ];
 
-    const handleDelete = (id) => {
-        console.log(id);
-    };
-
-    const handleQuantityChange = (id, quantity) => {
-        console.log(id, quantity);
-    };
-
     const getValueSelect = (userId, productId, quantity, size) => {
         const data = {
             userId,
@@ -98,7 +90,7 @@ const CartTable = ({ listProductCart, getData, isLoading, getDataDelete }) => {
 
                                     {/* Remove icone  */}
                                     <td>
-                                        <FaRegTrashCan
+                                        <FaRegTrashCan  
                                             onClick={() =>
                                                 getDataDelete({
                                                     userId: item.userId,
