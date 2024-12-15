@@ -4,6 +4,7 @@ import cls from 'classnames';
 import React, { useContext } from 'react';
 import { SideBarContext } from '@/contexts/SideBarProvider';
 import LoadingCart from '../LoadingCart';
+import { useNavigate } from 'react-router-dom';
 
 const CartSummary = () => {
     const {
@@ -24,6 +25,8 @@ const CartSummary = () => {
 
     const { listProductCart, isLoading } = useContext(SideBarContext);
 
+    const nagivate = useNavigate();
+
     const srcMethods = [
         'https://xstore.8theme.com/elementor2/marseille04/wp-content/themes/xstore/images/woocommerce/payment-icons/visa.jpeg',
         'https://xstore.8theme.com/elementor2/marseille04/wp-content/themes/xstore/images/woocommerce/payment-icons/master-card.jpeg',
@@ -38,6 +41,10 @@ const CartSummary = () => {
     }, 0);
 
     const  formatTotalCart = totalCart.toFixed(2);
+
+    const handleNavigateToShopping = () => {
+        nagivate('/shop');
+    }
 
     return (
         <div className={containerRight}>
@@ -56,7 +63,7 @@ const CartSummary = () => {
 
                 <Button content={'PROCEED TO CHECKOUT'} />
                 <div className={empty}></div>
-                <Button content={'CONTINUE SHOPPING'} isPriamry={false} />
+                <Button content={'CONTINUE SHOPPING'} isPriamry={false} onClick={handleNavigateToShopping}/>
 
                 {isLoading && (
                     <div>
