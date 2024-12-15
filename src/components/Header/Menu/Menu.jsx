@@ -10,7 +10,7 @@ function Menu({ content, href }) {
 
     const { userInfo, handleLogOut } = useContext(StoreContext);
     const [isShowSubMenu, setIsShowSubMenu] = useState(false);
-    // console.log('userInfo', userInfo);
+    console.log('userInfo', userInfo);
 
     const navigate = useNavigate();
 
@@ -45,7 +45,7 @@ function Menu({ content, href }) {
         <div
             className={menu}
             onClick={handleClickShowLogin}
-            onMouseEnter={handleHover}
+            onMouseEnter={handleHover}   // onMouseEnter là sự kiện khi hover vào element
         >
             {handleRenderContent(content)}
 

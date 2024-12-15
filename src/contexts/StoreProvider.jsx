@@ -8,11 +8,7 @@ export const StoreContext = createContext();
 const StoreProvider = ({ children }) => {
     const [userInfo, setUserInfo] = useState(null);
     const [userId, setUserId] = useState(Cookies.get('userId'));
-
-
-
-    // console.log('userId', userId);
-
+   
     const handleLogOut = () => {
         Cookies.remove('userId');
         Cookies.remove('token');
