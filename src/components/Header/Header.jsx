@@ -7,8 +7,6 @@ import Logo from '@icons/images/Logo-retina.png';
 import { TfiReload } from 'react-icons/tfi';
 import { BsHeart } from 'react-icons/bs';
 import { PiShoppingCart } from 'react-icons/pi';
-import heartIcon from '@icons/svgs/heart.svg';
-import cartIcon from '@icons/svgs/cartIcon.svg';
 import useScrollHandling from '@/hooks/useScrollHandling';
 import { useEffect } from 'react';
 import { useState } from 'react';
@@ -65,7 +63,7 @@ function MyHeader() {
                                 <BoxIcon
                                     key={item.type}
                                     type={item.type}
-                                    href={item.href}
+                                    href={item.href} 
                                 />
                             );
                         })}

@@ -12,7 +12,6 @@
         bottom: 0;
         background-color: #0000004d;
         z-index: 1000;
-
         transition: all 0.3s ease;
     }
 
@@ -24,7 +23,7 @@
         background-color: white;
         z-index: 1001;
         height: 100vh;
-
+        overflow-y: auto; // cái này để khi nội dung quá dài thì nó sẽ hiện thanh cuộn
         transform: translateX(370px);
         transition: all 0.3s ease;
     }
