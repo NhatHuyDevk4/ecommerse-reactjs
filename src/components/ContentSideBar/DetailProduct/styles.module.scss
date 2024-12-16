@@ -38,6 +38,10 @@
             padding: 9px;
             font-size: 12px;
             cursor: pointer;
+
+            &:hover{
+                border: 1px solid $primary_color;
+            }
         }
 
         .isActive{
