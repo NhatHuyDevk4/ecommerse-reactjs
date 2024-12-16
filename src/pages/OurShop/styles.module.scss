@@ -34,21 +34,22 @@
         flex-direction: column;
         padding: 60px 0px;
 
-        .countDownbox{
+        .countDownbox {
             @include flex_box_custom(center, center, 10px);
         }
 
-        .countDownbox > span { // lấy thắng span đầu tiên trong countDownbox
+        .countDownbox > span {
+            // lấy thắng span đầu tiên trong countDownbox
             margin-top: 0px;
             border: 1px solid #e1e1e1;
         }
 
-        .title{
+        .title {
             font-size: 24px;
             color: $four_color;
         }
 
-        .boxBtn{
+        .boxBtn {
             width: 160px;
         }
     }
@@ -59,28 +60,30 @@
 
     margin-top: 15px;
 
-    .boxLeft{
+    .boxLeft {
         @include flex_box_custom(center, center, 20px);
     }
 
-    .boxIcon{
+    .boxIcon {
         @include flex_box_custom(center, center, 10px);
         cursor: pointer;
     }
 
-    .selectBox{
-        border: 1px solid #e1e1e1;
-        padding: 5px;
-        color: $seconddary_color;
-    }
-
-    .selectBox.sort{
+    .selectBox.sort {
         width: 275px;
     }
 
-    .selectBox.show{
-        width: 83px;
-    }
+   
+}
+
+.selectBox {
+    border: 1px solid #e1e1e1;
+    padding: 5px;
+    color: $seconddary_color;
+}
+
+.selectBox.show {
+    width: 83px;
 }
 
 .containerProduct {
@@ -90,8 +93,6 @@
     flex-wrap: wrap; //flex-wrap là để các item trong flexbox sẽ xuống dòng khi không đủ chỗ
 }
 
-
-.sectionListProducts{
+.sectionListProducts {
     min-height: 800px; //để khi không có sản phẩm thì vẫn giữ nguyên chiều cao không bị nhảy
 }
-
