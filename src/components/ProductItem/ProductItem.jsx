@@ -12,6 +12,7 @@ import { LiaShoppingBagSolid } from 'react-icons/lia';
 import { CiHeart } from 'react-icons/ci';
 import { LiaEyeSolid } from 'react-icons/lia';
 import { TfiReload } from 'react-icons/tfi';
+import { useNavigate } from 'react-router-dom';
 
 function ProductItem({
     src,
@@ -44,6 +45,8 @@ function ProductItem({
 
     // console.log('isShowGrid', isShowGrid);
 
+    const navigate = useNavigate();
+
     const [sizeChoose, setSizeChoose] = useState('');
 
     const ourShopStore = useContext(OurShopContext);
@@ -65,6 +68,7 @@ function ProductItem({
         setSizeChoose('');
     };
 
+  
     const handleAddtoCart = () => {
         console.log('userId', userId);
         if (!userId) {
@@ -108,6 +112,14 @@ function ProductItem({
         setDetailProduct(details);
     };
 
+    const handleToDetailProduct = () => {
+        console.log('details', details._id);
+
+        const path = `/product/${details._id}`;
+        navigate(path);
+    };
+
+
     useEffect(() => {
         if (isHomepage) {
             setIsShowGrid(true);
@@ -117,7 +129,7 @@ function ProductItem({
     }, [isHomepage, ourShopStore?.isShowGrid]);
 
     return (
-        <div className={isShowGrid ? '' : containerItem}>
+        <div className={isShowGrid ? '' : containerItem} onClick={handleToDetailProduct}>
             <div className={cls(boxImg, { [largeImg]: !isShowGrid })}>
                 <img src={src} alt='' />
                 <img src={prevSrc} alt='' className={showImgWhenHover} />
