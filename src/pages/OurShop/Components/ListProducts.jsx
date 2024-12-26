@@ -7,6 +7,7 @@ import Button from '@components/Button/Button';
 
 import LoadingTextCommon from '@components/LoadingTextCommon/LoadingTextCommon';
 
+
 const ListProducts = () => {
     const {
         products,
@@ -27,7 +28,10 @@ const ListProducts = () => {
                     <>Loading.......</>
                 ) : (
                     <>
-                        <div className={isShowGrid ? containerProduct : ''}>
+                        <div
+                            className={isShowGrid ? containerProduct : ''}
+                            style={{ cursor: 'pointer' }}
+                        >
                             {products.map((item) => (
                                 <ProductItem
                                     key={item.id}
@@ -51,7 +55,7 @@ const ListProducts = () => {
                                 <Button
                                     content={
                                         isLoadMore ? (
-                                           <LoadingTextCommon />
+                                            <LoadingTextCommon />
                                         ) : (
                                             'LOAD MORE PRODUCT'
                                         )
