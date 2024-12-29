@@ -1,0 +1,33 @@
+@import '@styles/variable.module.scss';
+@import '@styles/mixin.module.scss';
+
+.container {
+    padding-top: 83px;
+
+    .navigateSection {
+        @include flex_box_custom(space-between, center, 0);
+        color: $seconddary_color;
+        font-size: 14px;
+        font-weight: 300;
+        padding: 10px 0px;
+    }
+
+    .contentSection{
+        @include flex_box_custom(space-between, center, 0);
+
+        .imgeBox{
+            max-width: 610px;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+
+            img{
+                width: calc(100% / 2 - 10px);
+                height: 352px;
+                object-fit: cover;
+                border-radius: 3px;
+            }
+        }
+    }
+}
