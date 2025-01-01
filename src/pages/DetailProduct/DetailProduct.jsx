@@ -23,8 +23,22 @@ const DetailProduct = () => {
         orSection,
         line,
         orText,
-        boxIcon
+        boxIcon,
+        boxPayment,
+        boxPaymentTitle,
+        boxPaymentItem,
+        paymentBottom
     } = style;
+
+    const srcMethods = [
+        'https://xstore.8theme.com/elementor2/marseille04/wp-content/themes/xstore/images/woocommerce/payment-icons/visa.jpeg',
+        'https://xstore.8theme.com/elementor2/marseille04/wp-content/themes/xstore/images/woocommerce/payment-icons/master-card.jpeg',
+        'https://xstore.8theme.com/elementor2/marseille04/wp-content/themes/xstore/images/woocommerce/payment-icons/paypal.jpeg',
+        'https://xstore.8theme.com/elementor2/marseille04/wp-content/themes/xstore/images/woocommerce/payment-icons/american-express.jpeg',
+        'https://xstore.8theme.com/elementor2/marseille04/wp-content/themes/xstore/images/woocommerce/payment-icons/maestro.jpeg',
+        'https://xstore.8theme.com/elementor2/marseille04/wp-content/themes/xstore/images/woocommerce/payment-icons/bitcoin.jpeg'
+    ];
+
 
     return (
         <div>
@@ -64,15 +78,12 @@ const DetailProduct = () => {
                                 Amet, elit tellus, nisi odio velit ut. Euismod
                                 sit arcu, quisque arcu purus orci leo.
                             </p>
-
                             <div className={titleSize}>Size</div>
-
                             <div className={boxSize}>
                                 <div className={size}>L</div>
                                 <div className={size}>M</div>
                                 <div className={size}>S</div>
                             </div>
-
                             <div className={functionInfo}>
                                 <div className={incremenAmout}>
                                     <div>-</div>
@@ -84,17 +95,14 @@ const DetailProduct = () => {
                                     <Button content={'Add to cart'} />
                                 </div>
                             </div>
-
                             <div className={orSection}>
                                 <div className={line} />
                                 <div className={orText}>OR</div>
                                 <div className={line} />
                             </div>
-
                             <div className={boxBtn}>
                                 <Button content={'Buy now'} isPriamry={true} />
                             </div>
-
                             <div className={boxIcon}>
                                 <CiHeart
                                     style={{
@@ -114,6 +122,23 @@ const DetailProduct = () => {
                                         padding: '10px'
                                     }}
                                 />
+                            </div>
+                            <div className={boxPayment}>
+                                <div className={boxPaymentTitle}>
+                                    Guaranteed <span>safe</span> checkout
+                                </div>
+                                <div className={boxPaymentItem}>
+                                    {srcMethods.map((item, index) => (
+                                        <img
+                                            src={item}
+                                            alt='ảnh src'
+                                            key={index}
+                                        />
+                                    ))}
+                                </div>
+                            </div>
+                            <div className={paymentBottom}>
+                                <span>Your Payment</span> is 100% Secure
                             </div>
                         </div>
                     </div>
