@@ -5,6 +5,7 @@ import style from './styles.module.scss';
 import Button from '@components/Button/Button';
 import { CiHeart } from 'react-icons/ci';
 import { IoReload } from 'react-icons/io5';
+import MyFooter from '@components/Footer/Footer';
 const DetailProduct = () => {
     const {
         container,
@@ -27,7 +28,8 @@ const DetailProduct = () => {
         boxPayment,
         boxPaymentTitle,
         boxPaymentItem,
-        paymentBottom
+        paymentBottom,
+        boxDetail
     } = style;
 
     const srcMethods = [
@@ -38,7 +40,6 @@ const DetailProduct = () => {
         'https://xstore.8theme.com/elementor2/marseille04/wp-content/themes/xstore/images/woocommerce/payment-icons/maestro.jpeg',
         'https://xstore.8theme.com/elementor2/marseille04/wp-content/themes/xstore/images/woocommerce/payment-icons/bitcoin.jpeg'
     ];
-
 
     return (
         <div>
@@ -123,6 +124,7 @@ const DetailProduct = () => {
                                     }}
                                 />
                             </div>
+
                             <div className={boxPayment}>
                                 <div className={boxPaymentTitle}>
                                     Guaranteed <span>safe</span> checkout
@@ -140,9 +142,20 @@ const DetailProduct = () => {
                             <div className={paymentBottom}>
                                 <span>Your Payment</span> is 100% Secure
                             </div>
+
+                            <div className={boxDetail}>
+                                Brand: <span>Brand 01</span>
+                            </div>
+                            <div className={boxDetail}>
+                                SKU: <span>1234</span>
+                            </div>
+                            <div className={boxDetail}>
+                                Category: <span>Men</span>
+                            </div>
                         </div>
                     </div>
                 </MainLayout>
+                <MyFooter />
             </div>
         </div>
     );
