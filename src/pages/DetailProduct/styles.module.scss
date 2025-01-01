@@ -123,6 +123,7 @@
                 border: 1px solid #e1e1e1;
                 position: relative;
                 width: 100%;
+                padding: 25px 0px;
 
                 &Title {
                     font-size: 14px;
@@ -132,8 +133,6 @@
                     left: 50%;
                     top: -8px;
                     text-transform: uppercase;
-                    
-                  
 
                     span {
                         color: #2e7d32;
@@ -143,7 +142,7 @@
                 &Item {
                     @include flex_box_custom(center, center, 10px);
                     padding: 21px 7px;
-                    img{
+                    img {
                         width: 50px;
                         height: 34px;
                         border: 1px solid #e1e1e1;
@@ -152,17 +151,24 @@
                 }
             }
 
-            .paymentBottom{
+            .paymentBottom {
                 text-align: center;
                 margin-top: 10px;
                 font-size: 14px;
                 color: $four_color;
 
-                span{
-                    color:$thr_color;
+                span {
+                    color: $thr_color;
                 }
             }
-        
+
+            .boxDetail{
+                margin-top: 15px;
+
+                span{
+                    color: $thr_color;
+                }
+            }
         }
     }
 }
