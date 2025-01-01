@@ -3,6 +3,8 @@ import MainLayout from '@components/Layout/Layout';
 import React from 'react';
 import style from './styles.module.scss';
 import Button from '@components/Button/Button';
+import { CiHeart } from 'react-icons/ci';
+import { IoReload } from 'react-icons/io5';
 const DetailProduct = () => {
     const {
         container,
@@ -21,6 +23,7 @@ const DetailProduct = () => {
         orSection,
         line,
         orText,
+        boxIcon
     } = style;
 
     return (
@@ -77,19 +80,40 @@ const DetailProduct = () => {
                                     <div>+</div>
                                 </div>
 
-                                <div className={boxBtn} >
+                                <div className={boxBtn}>
                                     <Button content={'Add to cart'} />
                                 </div>
                             </div>
 
                             <div className={orSection}>
-                                <div className={line}/>
+                                <div className={line} />
                                 <div className={orText}>OR</div>
-                                <div className={line}/>
+                                <div className={line} />
                             </div>
 
                             <div className={boxBtn}>
-                                <Button content={'Buy now'} isPriamry={true}/>
+                                <Button content={'Buy now'} isPriamry={true} />
+                            </div>
+
+                            <div className={boxIcon}>
+                                <CiHeart
+                                    style={{
+                                        fontSize: '25px',
+                                        fontWeight: '400',
+                                        border: '1px solid #e1e1e1',
+                                        borderRadius: '50%',
+                                        padding: '10px'
+                                    }}
+                                />
+                                <IoReload
+                                    style={{
+                                        fontSize: '25px',
+                                        fontWeight: '400',
+                                        border: '1px solid #e1e1e1',
+                                        borderRadius: '50%',
+                                        padding: '10px'
+                                    }}
+                                />
                             </div>
                         </div>
                     </div>
