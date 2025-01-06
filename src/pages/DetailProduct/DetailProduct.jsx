@@ -6,6 +6,7 @@ import Button from '@components/Button/Button';
 import { CiHeart } from 'react-icons/ci';
 import { IoReload } from 'react-icons/io5';
 import MyFooter from '@components/Footer/Footer';
+import AccordionMenu from '@components/AccordionMenu';
 const DetailProduct = () => {
     const {
         container,
@@ -72,6 +73,7 @@ const DetailProduct = () => {
                                 alt='ten'
                             />
                         </div>
+                        
                         <div className={infoBox}>
                             <h1>Title Product</h1>
                             <p className={price}>$1,879.99</p>
@@ -152,7 +154,9 @@ const DetailProduct = () => {
                             <div className={boxDetail}>
                                 Category: <span>Men</span>
                             </div>
-                        </div>
+
+                            <AccordionMenu />
+                        </div>          
                     </div>
                 </MainLayout>
                 <MyFooter />

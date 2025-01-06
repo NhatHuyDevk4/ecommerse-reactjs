@@ -13,7 +13,7 @@
     }
 
     .contentSection {
-        @include flex_box_custom(unset, flex-start, 0);
+        @include flex_box_custom(unset, flex-start, 20px);
 
         .imgeBox {
             max-width: 610px;
