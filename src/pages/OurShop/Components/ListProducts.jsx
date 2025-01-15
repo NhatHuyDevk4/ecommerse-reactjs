@@ -19,7 +19,7 @@ const ListProducts = () => {
     } = useContext(OurShopContext);
 
     const { containerProduct, sectionListProducts, rotate } = styles;
-    // console.log('products', products);
+   
 
     return (
         <div className={sectionListProducts}>

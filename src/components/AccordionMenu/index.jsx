@@ -3,7 +3,7 @@ import style from './styles.module.scss';
 import cls from 'classnames';
 import { IoIosArrowDown } from 'react-icons/io';
 import { TfiLayoutLineSolid } from 'react-icons/tfi';
-function AccordionMenu() {
+function AccordionMenu({ titleMenu, contentMenuBox, onClick, isSelected}) {
     const {
         container,
         title,
@@ -13,11 +13,13 @@ function AccordionMenu() {
         borderBottom
     } = style;
 
-    const [isSelected, setIsSelected] = useState(false);
+    console.log(isSelected);
 
     const handleToggle = () => {
-        setIsSelected(!isSelected);
+        onClick();
     };
+
+    
 
     return (
         <div className={container}>
@@ -26,7 +28,7 @@ function AccordionMenu() {
                 onClick={handleToggle}
             >
                 {isSelected ? <TfiLayoutLineSolid /> : <IoIosArrowDown />}
-                ADDITIONAL INFORMATION
+                {titleMenu}
             </div>
 
             <div
@@ -35,23 +37,7 @@ function AccordionMenu() {
                     [borderBottom]: isSelected
                 })}
             >
-                <div>Size -------- L,M,S</div>
-            </div>
-            <div
-                className={cls(title, { [activeTitle]: isSelected })}
-                onClick={handleToggle}
-            >
-                {isSelected ? <TfiLayoutLineSolid /> : <IoIosArrowDown />}
-                ADDITIONAL INFORMATION
-            </div>
-
-            <div
-                className={cls(contentMenu, borderBottom, {
-                    [isVisibility]: isSelected,
-                    [borderBottom]: isSelected
-                })}
-            >
-                <div>Size -------- L,M,S</div>
+                {contentMenuBox}
             </div>
         </div>
     );
