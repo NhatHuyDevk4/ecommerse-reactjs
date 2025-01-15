@@ -1,6 +1,6 @@
 import MyHeader from '@components/Header/Header';
 import MainLayout from '@components/Layout/Layout';
-import React from 'react';
+import React, { useState } from 'react';
 import style from './styles.module.scss';
 import Button from '@components/Button/Button';
 import { CiHeart } from 'react-icons/ci';
@@ -42,6 +42,26 @@ const DetailProduct = () => {
         'https://xstore.8theme.com/elementor2/marseille04/wp-content/themes/xstore/images/woocommerce/payment-icons/bitcoin.jpeg'
     ];
 
+    const [menuSelected, setMenuSelected] = useState(1);
+
+    const accordionMenu = [
+        {
+            id: 1,
+            titileMenu: 'Additional information',
+            content: <div>Size L,M,S</div>
+        },
+        {
+            id: 2,
+            titileMenu: 'REVIEWS (0)',
+            content: <div>There are no reviews yet.</div>
+        }
+    ];
+
+    const handleclickSelectedMenu = (index) => {
+        setMenuSelected(index);
+        // console.log(index);
+    };
+
     return (
         <div>
             <MyHeader />
@@ -73,7 +93,7 @@ const DetailProduct = () => {
                                 alt='ten'
                             />
                         </div>
-                        
+
                         <div className={infoBox}>
                             <h1>Title Product</h1>
                             <p className={price}>$1,879.99</p>
@@ -155,8 +175,16 @@ const DetailProduct = () => {
                                 Category: <span>Men</span>
                             </div>
 
-                            <AccordionMenu />
-                        </div>          
+                            {accordionMenu.map((item, index) => (
+                                <AccordionMenu
+                                    key={index}
+                                    titleMenu={item.titileMenu}
+                                    contentMenuBox={item.content}
+                                    onClick={() => handleclickSelectedMenu(item.id)}
+                                    isSelected={menuSelected === item.id}
+                                />
+                            ))}
+                        </div>
                     </div>
                 </MainLayout>
                 <MyFooter />
