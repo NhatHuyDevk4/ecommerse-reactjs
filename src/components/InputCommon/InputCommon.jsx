@@ -21,8 +21,6 @@ const InputCommon = ({ label, type, isRequired = false, ...props }) => {
     const isErr = formik.touched[id] && formik.errors[id];
     const messageErr = formik.errors[id];
 
-    // console.log('props', props);
-
     return (
         <div className={container}>
             <div className={labelInput}>
