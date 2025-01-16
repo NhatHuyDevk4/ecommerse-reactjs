@@ -19,7 +19,6 @@ const StoreProvider = ({ children }) => {
 
     useEffect(() => {
         if (userId) {
-            // call api get info
             getInfo(userId)
                 .then((res) => {
                     console.log('res', res);
@@ -29,7 +28,7 @@ const StoreProvider = ({ children }) => {
                     console.log('err', err);
                 });
         }
-    }, [userId]); // nếu có userId mới chạy lại useEffect
+    }, [userId]); 
 
     console.log('userInfo', userInfo);
     return (
