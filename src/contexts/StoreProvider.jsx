@@ -14,7 +14,7 @@ const StoreProvider = ({ children }) => {
         Cookies.remove('token');
         Cookies.remove('refreshToken');
         setUserInfo(null);
-        window.location.reload();
+        window.location.reload(); //reload lại trang
     }
 
     useEffect(() => {
