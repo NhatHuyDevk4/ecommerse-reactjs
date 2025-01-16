@@ -59,7 +59,6 @@ const DetailProduct = () => {
 
     const handleclickSelectedMenu = (index) => {
         setMenuSelected(index);
-        // console.log(index);
     };
 
     return (
