@@ -43,8 +43,6 @@ function ProductItem({
 
     // const { isShowGrid } = useContext(OurShopContext);
 
-    // console.log('isShowGrid', isShowGrid);
-
     const navigate = useNavigate();
 
     const [sizeChoose, setSizeChoose] = useState('');
@@ -108,7 +106,6 @@ function ProductItem({
     const handleShowDetailProductSideBar = () => {
         setIsOpen(true);
         setType('detail');
-        // console.log('details', details);
         setDetailProduct(details);
     };
 
