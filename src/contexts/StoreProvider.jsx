@@ -9,7 +9,7 @@ const StoreProvider = ({ children }) => {
     const [userInfo, setUserInfo] = useState(null);
     const [userId, setUserId] = useState(Cookies.get('userId'));
    
-    const handleLogOut = () => {
+    const handleLogOut = () => { //xử lý đăng xuất
         Cookies.remove('userId');
         Cookies.remove('token');
         Cookies.remove('refreshToken');
