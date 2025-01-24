@@ -7,6 +7,10 @@ import { CiHeart } from 'react-icons/ci';
 import { IoReload } from 'react-icons/io5';
 import MyFooter from '@components/Footer/Footer';
 import AccordionMenu from '@components/AccordionMenu';
+
+import Information from './components/Information';
+import Review from './components/Review';
+
 const DetailProduct = () => {
     const {
         container,
@@ -48,12 +52,13 @@ const DetailProduct = () => {
         {
             id: 1,
             titileMenu: 'Additional information',
-            content: <div>Size L,M,S</div>
+            content: <Information />
         },
         {
             id: 2,
             titileMenu: 'REVIEWS (0)',
-            content: <div>There are no reviews yet.</div>
+detailProductRight
+            content: <Review />
         }
     ];
 
@@ -179,7 +184,11 @@ const DetailProduct = () => {
                                     key={index}
                                     titleMenu={item.titileMenu}
                                     contentMenuBox={item.content}
-                                    onClick={() => handleclickSelectedMenu(item.id)}
+
+                                    onClick={() =>
+                                        handleclickSelectedMenu(item.id)
+                                    }
+
                                     isSelected={menuSelected === item.id}
                                 />
                             ))}
