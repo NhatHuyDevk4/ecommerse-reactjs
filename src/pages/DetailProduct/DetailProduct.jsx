@@ -50,12 +50,12 @@ const DetailProduct = () => {
         {
             id: 1,
             titileMenu: 'Additional information',
-            content: <div>Size L,M,S</div>
+            content: <Information />
         },
         {
             id: 2,
             titileMenu: 'REVIEWS (0)',
-            content: <div>There are no reviews yet.</div>
+            content: <Review />
         }
     ];
 
