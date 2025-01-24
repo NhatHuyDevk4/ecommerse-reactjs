@@ -1,14 +1,16 @@
 import MyHeader from '@components/Header/Header';
 import MainLayout from '@components/Layout/Layout';
-import React from 'react';
+import React, { useState } from 'react';
 import style from './styles.module.scss';
 import Button from '@components/Button/Button';
 import { CiHeart } from 'react-icons/ci';
 import { IoReload } from 'react-icons/io5';
 import MyFooter from '@components/Footer/Footer';
 import AccordionMenu from '@components/AccordionMenu';
+
 import Information from './components/Information';
 import Review from './components/Review';
+
 const DetailProduct = () => {
     const {
         container,
@@ -55,6 +57,7 @@ const DetailProduct = () => {
         {
             id: 2,
             titileMenu: 'REVIEWS (0)',
+detailProductRight
             content: <Review />
         }
     ];
@@ -181,15 +184,18 @@ const DetailProduct = () => {
                                     key={index}
                                     titleMenu={item.titileMenu}
                                     contentMenuBox={item.content}
+
                                     onClick={() =>
                                         handleclickSelectedMenu(item.id)
                                     }
+
                                     isSelected={menuSelected === item.id}
                                 />
                             ))}
                         </div>
                     </div>
                 </MainLayout>
+                <MyFooter />
             </div>
         </div>
     );

@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import InputCommon from '@components/InputCommon/InputCommon';
 import styles from './styles.module.scss';
 import Button from '@components/Button/Button';
-import { useFormik } from 'formik';
+import { useFormik } from 'formik'; //formik giúp xử lý form
 import * as Yup from 'yup';
 import { ToastContext } from '@/contexts/ToastProvider';
 import { register, signIn, getInfo } from '@/apis/authService';
@@ -45,6 +45,8 @@ function Login() {
                 'Password must match'
             )
         }),
+
+        
         onSubmit: async (values) => {
             // Handle form submission
             // console.log(values);
