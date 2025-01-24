@@ -57,7 +57,6 @@ const DetailProduct = () => {
         {
             id: 2,
             titileMenu: 'REVIEWS (0)',
-detailProductRight
             content: <Review />
         }
     ];
